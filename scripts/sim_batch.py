@@ -1,17 +1,16 @@
 """
 批量运行所有天线仿真
-在安装了 ANSYS AEDT 的机器上运行:
-    python batch_simulate.py
-
+用法: python scripts/sim_batch.py
 前置要求: pip install pyaedt
 """
 
 from ansys.aedt.core import Hfss
 import os, shutil, tempfile, uuid
 
-SIM_DIR = os.path.dirname(os.path.abspath(__file__))
+SIM_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECTS_DIR = os.path.join(SIM_DIR, "projects")
 AEDT_VERSION = "2023.1"
-AEDT_FILES = [f for f in os.listdir(SIM_DIR) if f.endswith(".aedt")]
+AEDT_FILES = [f for f in os.listdir(PROJECTS_DIR) if f.endswith(".aedt")]
 
 
 def _prepare_project(src_path):
@@ -38,7 +37,7 @@ if not AEDT_FILES:
     exit(1)
 
 for aedt_file in AEDT_FILES:
-    filepath = os.path.join(SIM_DIR, aedt_file)
+    filepath = os.path.join(PROJECTS_DIR, aedt_file)
     print(f"\n{'='*60}")
     print(f"开始仿真: {aedt_file}")
     print(f"{'='*60}")

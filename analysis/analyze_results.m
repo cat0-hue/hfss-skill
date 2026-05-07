@@ -7,7 +7,7 @@ clear; clc; close all;
 fprintf('=== 天线仿真结果分析 ===\n\n');
 
 %% 1. 读取数据
-results_dir = fileparts(mfilename('fullpath'));
+results_dir = fileparts(fileparts(mfilename('fullpath')));  % 上级目录 = 项目根目录
 results_dir = fullfile(results_dir, 'results');
 
 % 读取 S11_dB (已修正: 使用 dB(S(1,1)) 幅度数据)

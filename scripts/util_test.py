@@ -6,9 +6,9 @@ PyAEDT + ANSYS AEDT 连接测试
 from ansys.aedt.core import Hfss
 import os, sys, traceback
 
-SIM_DIR = os.path.dirname(os.path.abspath(__file__))
+SIM_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AEDT_VERSION = "2023.1"
-PROJECT_FILE = os.path.join(SIM_DIR, "半波偶极子天线.aedt")
+PROJECT_FILE = os.path.join(SIM_DIR, "projects", "dipole_halfwave.aedt")
 
 print(f"Python:   {sys.version}")
 print(f"PyAEDT:   0.26.3")

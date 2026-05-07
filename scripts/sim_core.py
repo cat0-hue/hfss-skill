@@ -1,18 +1,17 @@
 """
-PyAEDT 自动化仿真脚本
-使用方法: 在安装了 ANSYS AEDT 的机器上运行:
-    python run_simulation.py
-
+PyAEDT 天线仿真核心脚本
+使用方法: python scripts/sim_core.py
 前置要求: pip install pyaedt
 """
 
 from ansys.aedt.core import Hfss
 import os, shutil, tempfile, uuid
 
+SIM_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # ===== 配置 =====
-PROJECT_FILE = os.path.join(os.path.dirname(__file__), "半波偶极子天线.aedt")
+PROJECT_FILE = os.path.join(SIM_DIR, "projects", "dipole_halfwave.aedt")
 AEDT_VERSION = "2023.1"  # ANSYS EM 2023 R1
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "results")
+OUTPUT_DIR = os.path.join(SIM_DIR, "results")
 USE_TEMP_PATH = True  # True: 复制到临时目录避免中文路径问题
 
 

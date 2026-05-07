@@ -1,13 +1,14 @@
 """
 修正脚本：设置 InfiniteSphereSetup 确保远场方向图正确计算
-用法: python run_proper.py
+用法: python scripts/sim_farfield_fix.py
 """
 from ansys.aedt.core import Hfss
 import os, shutil, tempfile, uuid
 
-PROJECT_FILE = os.path.join(os.path.dirname(__file__), "半波偶极子天线.aedt")
+SIM_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_FILE = os.path.join(SIM_DIR, "projects", "dipole_halfwave.aedt")
 AEDT_VERSION = "2023.1"
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "results")
+OUTPUT_DIR = os.path.join(SIM_DIR, "results")
 
 def _prepare_project(src_path):
     try:

@@ -1,6 +1,9 @@
-# 仿真结果目录（不上传）
+# 仿真结果
 results/
 *.aedt
 *.aedb/
+*.aedtresults/
+*.aedt.lock
 __pycache__/
 *.pyc
+*.avi
